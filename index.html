@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                clifford: '#da373d',
+              }
+            }
+          }
+        }
+      </script>
+    <link rel="stylesheet" href="./css/style.css">
+    <style type="text/tailwindcss">
+        .my-fields{
+            @apply shadow appearance-none  py-2 px-3 border rounded text-gray-700 leading-tight focus:outline-none focus:ring-2 ring-blue-400;
+        } 
+      </style>
+</head>
+<body>
+    <div class="my-container w-full h-full">
+
+        
+        <div class="my-head">
+            <h1 class="text-center m-5 text-3xl">To Do</h1>
+        </div>
+
+
+        <div class="flex flex-col justify-center items-center border-2 border-solid ">
+
+
+            <div class="w-11/12 border-2 border-solid border-clifford  p-3  lg:w-6/12">
+                <input class="my-fields w-8/12" id="task" type="text" placeholder="Add a Task...">
+                <input class="my-fields" type="date" name="due" id="due">  
+            </div>
+
+
+            <div class="w-11/12 border-2 border-solid border-clifford px-3 lg:w-6/12">
+                <div class="flex items-center space-x-4">
+                    <p class="py-4 px-1 inline-block mr-16">Priority</p>
+                  <input type="radio" id="high" name="priority" value="high" class="h-4 w-4">
+                  <label for="high">High</label>
+                  <div class="w-4 h-4 bg-red-500"></div>
+                  <input type="radio" id="mid" name="priority" value="moderate" class="h-4 w-4">
+                  <label for="mid">Moderate</label>
+                  <div class="w-4 h-4 bg-yellow-500">
+                  </div>                 
+                  <input type="radio" id="low" name="priority" value="low" class="h-4 w-4">
+                  <label for="low">Low</label>
+                  <div class="w-4 h-4 bg-green-500"></div>
+                </div>
+              </div>
+              
+              
+
+              <div>
+                <button class="rounded-full text-white bg-blue-400 p-3 m-3 w-24 hover:bg-blue-500 font-bold">Add</button>
+              </div>
+            
+             
+            
+        </div>
+        <div class="my-footer">
+
+        </div>
+    </div>
+    
+    <script src="./js/script.js"></script>
+</body>
+</html>
