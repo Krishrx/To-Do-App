@@ -1,17 +1,22 @@
-let toDoArray = getToDoTasksFromDb();
-if(toDoArray){
-    sortTasks(toDoArray)
-    updateTasksTable(toDoArray);
-}
+displayTables();
 
+function displayTables(){
+    let toDoArray = getToDoTasksFromDb();
+    if(toDoArray.length!==0){
+        sortTasks(toDoArray)
+        updateTasksTable(toDoArray);
+    }
+}
 
 const sectionTwo = document.getElementById('section-two');
 
 sectionTwo.addEventListener('change', function(event) {
-    if (event.target.classList.contains('checkbox')) {
-        const spanElement = event.target.nextElementSibling;
-        spanElement.classList.toggle('checked', event.target.checked);
-    }
+    if (event.target.classList.contains("checkbox")) {
+        const taskId = parseInt(event.target.closest("tr").querySelector(".hidden").textContent);
+        toggleTaskCompletion(taskId);
+
+        displayTables();
+      }
 });
 
 
@@ -26,7 +31,15 @@ toggleButton.addEventListener('click', () => {
 });
 
 
+function toggleTaskCompletion(taskId) {
+    const tasks = JSON.parse(localStorage.getItem("toDoTasks")) || [];
+    const taskIndex = tasks.findIndex(task => task.id === taskId);
 
+    if (taskIndex !== -1) {
+        tasks[taskIndex].completed = !tasks[taskIndex].completed;
+        localStorage.setItem("toDoTasks", JSON.stringify(tasks));
+    }
+  }
 
 
 function addTask(){
@@ -35,9 +48,7 @@ function addTask(){
     let fieldValues = getFields();
     addTasksToDb(fieldValues);
 
-    let toDoArray = getToDoTasksFromDb();
-    sortTasks(toDoArray)
-    updateTasksTable(toDoArray);
+    displayTables();
 
     clearFields();
 
@@ -67,7 +78,8 @@ function getFields(){
         "id":id,
         "taskField":taskField,
         "due":due,
-        "priorityValue":priorityValue
+        "priorityValue":priorityValue,
+        "completed":false
     }
     return obj;
 }
@@ -137,20 +149,25 @@ function getToDoTasksFromDb(){
         let Sample = localStorage.getItem("toDoTasks");
         toDoList = JSON.parse(Sample);
     }
-    return toDoList;
+    return toDoList===undefined?[]:toDoList;
 }
 
 function updateTasksTable(tasks){
     let taskTable = document.querySelector('#tasksTable tbody');
+    let completedTable = document.querySelector('#completedTasksTable tbody');
+
+    let completedTasksCount = 0;
+
     taskTable.innerHTML = "";
+    completedTable.innerHTML = "";
 
     tasks.forEach(task => {
         const row = document.createElement("tr");
         row.className = "bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600";
         row.innerHTML = `<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-normal dark:text-white" style="width: 40%;">
                             <label class="flex items-center">
-                                <input type="checkbox" class="mr-2 checkbox w-4 h-4">
-                                <span>${task.taskField}</span>
+                                <input type="checkbox" class="mr-2 checkbox w-4 h-4" ${task.completed ? "checked" : ""}>
+                                <span ${task.completed ? 'class="checked" style="text-decoration: line-through;"' : ''}>${task.taskField}</span>
                             </label>
                             </th>
                             <td class="px-6 py-4 hidden">
@@ -167,9 +184,13 @@ function updateTasksTable(tasks){
                             <i class="fa-solid fa-pen"></i>
                             <i class="fa-regular fa-trash-can"></i>
                             </td>`
-        taskTable.appendChild(row);
+        if(task.completed){
+            completedTable.appendChild(row);
+            completedTasksCount++;
+        } 
+        else taskTable.appendChild(row);
     });
-
+    document.getElementById('finishCount').textContent = completedTasksCount;
 }
 
 
