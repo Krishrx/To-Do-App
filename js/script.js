@@ -1,21 +1,13 @@
 let toDoArray = getToDoTasksFromDb();
-sortTasks(toDoArray)
-updateTasksTable(toDoArray);
+if(toDoArray){
+    sortTasks(toDoArray)
+    updateTasksTable(toDoArray);
+}
 
 
-const tasksTable = document.getElementById('tasksTable');
+const sectionTwo = document.getElementById('section-two');
 
-tasksTable.addEventListener('change', function(event) {
-    if (event.target.classList.contains('checkbox')) {
-        const spanElement = event.target.nextElementSibling;
-        spanElement.classList.toggle('checked', event.target.checked);
-    }
-});
-
-
-const completedTasksTable = document.getElementById('completedTasksTable');
-
-completedTasksTable.addEventListener('change', function(event) {
+sectionTwo.addEventListener('change', function(event) {
     if (event.target.classList.contains('checkbox')) {
         const spanElement = event.target.nextElementSibling;
         spanElement.classList.toggle('checked', event.target.checked);
@@ -227,3 +219,22 @@ function updateTasksTable(tasks){
 
 //     taskTable.appendChild(row);
 // }
+
+// const tasksTable = document.getElementById('tasksTable');
+
+// tasksTable.addEventListener('change', function(event) {
+//     if (event.target.classList.contains('checkbox')) {
+//         const spanElement = event.target.nextElementSibling;
+//         spanElement.classList.toggle('checked', event.target.checked);
+//     }
+// });
+
+
+// const completedTasksTable = document.getElementById('completedTasksTable');
+
+// completedTasksTable.addEventListener('change', function(event) {
+//     if (event.target.classList.contains('checkbox')) {
+//         const spanElement = event.target.nextElementSibling;
+//         spanElement.classList.toggle('checked', event.target.checked);
+//     }
+// });
