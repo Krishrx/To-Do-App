@@ -70,8 +70,14 @@
 
               <!-- add button -->
               <div>
-                <button class="rounded-md text-indigo-500  p-3 m-3 w-24 bg-indigo-200 shadow shadow-blue-500/40 hover:shadow-indigo-500/40" onclick="addTask()">Add</button>
-              </div>            
+                <button class="rounded-md text-indigo-500  p-3 m-3 w-24 bg-indigo-200 shadow shadow-blue-500/40 hover:shadow-indigo-500/40" onclick="addTask()" id="add-btn">Add</button>
+              </div>   
+              
+              <!-- edit & cancel button -->
+              <div class="hidden" id="editAndCancel">
+                <button class="rounded-md text-indigo-500  p-3 m-3 w-24 bg-indigo-200 shadow shadow-blue-500/40 hover:shadow-indigo-500/40" onclick="editBtnFn()" id="edit-btn">Edit</button>
+                <button class="rounded-md text-white  p-3 m-3 w-24 bg-gray-500 shadow shadow-blue-500/40 hover:shadow-indigo-500/40" onclick="cancel()" id="cancel-btn">Cancel</button>
+              </div>
             
         </div>
 
@@ -115,48 +121,7 @@
         <div class="overflow-x-auto shadow-md sm:rounded-lg m-5 w-full hidden" id="completedDiv">
           <table class="text-sm text-left text-gray-500 dark:text-gray-400 w-full" id="completedTasksTable">
             <tbody>
-              <!-- <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal dark:text-white" style="width: 40%;">
-                  <label class="flex items-center">
-                    <input type="checkbox" class="mr-2 checkbox w-4 h-4">
-                    <span>College</span>
-                  </label>
-                </td>
-                <td class="px-6 py-4 hidden">
-        
-                </td>
-                <td class="px-6 py-4" style="width: 20%;">
-                  <div class="w-4 h-4 bg-red-500"></div>
-                </td>
-                <td class="px-6 py-4" style="width: 20%;">
-                  2023-08-23
-                </td>
-                <td class="px-6 py-4" style="width: 20%;">
-                  <i class="fa-solid fa-pen"></i>
-                  <i class="fa-regular fa-trash-can"></i>
-                </td>
-              </tr>
-              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal dark:text-white" style="width: 40%;">
-                  <label class="flex items-center">
-                    <input type="checkbox" class="mr-2 checkbox w-4 h-4">
-                    <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat perspiciatis quae fugit dolorum dignissimos illo ipsam itaque possimus amet nulla.</span>
-                  </label>
-                </td>
-                <td class="px-6 py-4 hidden">
-        
-                </td>
-                <td class="px-6 py-4" style="width: 20%;">
-                  <div class="w-4 h-4 bg-red-500"></div>
-                </td>
-                <td class="px-6 py-4" style="width: 20%;">
-                  2023-08-23
-                </td>
-                <td class="px-6 py-4" style="width: 20%;">
-                  <i class="fa-solid fa-pen"></i>
-                  <i class="fa-regular fa-trash-can"></i>
-                </td>
-              </tr> -->
+              
             </tbody>
           </table>
         </div>

@@ -2,7 +2,7 @@ displayTables();
 
 function displayTables(){
     let toDoArray = getToDoTasksFromDb();
-    if(toDoArray.length!==0){
+    if(toDoArray){
         sortTasks(toDoArray)
         updateTasksTable(toDoArray);
     }
@@ -56,7 +56,7 @@ function addTask(){
 
 function validate(){
     const taskField = document.getElementById('task').value;
-    if(taskField==='') return false;
+    if(taskField.trim()==='') return false;
     else return true;
 }
 
@@ -181,8 +181,8 @@ function updateTasksTable(tasks){
                             </td>
 
                             <td class="px-6 py-4" style="width: 20%;">
-                            <i class="fa-solid fa-pen"></i>
-                            <i class="fa-regular fa-trash-can"></i>
+                            <i class="fa-solid fa-pen edit cursor-pointer" onclick="editTask()"></i>
+                            <i class="fa-regular fa-trash-can delete cursor-pointer" onclick="deleteTask()"></i>
                             </td>`
         if(task.completed){
             completedTable.appendChild(row);
@@ -190,72 +190,110 @@ function updateTasksTable(tasks){
         } 
         else taskTable.appendChild(row);
     });
+    completedTasksCount = (completedTasksCount==0)?'':completedTasksCount;
     document.getElementById('finishCount').textContent = completedTasksCount;
 }
 
+let editId = 0;
+
+function editTask() {
+    toggleAddEditButtons();
+    const tableRow = event.target.closest("tr");
+    const taskId = parseInt(tableRow.querySelector(".hidden").textContent);
+    editId = taskId;
+
+    const tasks = getToDoTasksFromDb();
+
+    const taskIndex = tasks.findIndex(task => task.id === taskId);
+    if (taskIndex !== -1) {
+        populateFields(tasks[taskIndex]);
+    }
+}
+
+function editBtnFn(){
+    if(!validate()) return;
+    let taskId;
+    if(editId!==0) taskId = editId;
+    const tasks = getToDoTasksFromDb();
+
+    const taskIndex = tasks.findIndex(task => task.id === taskId);
+    if (taskIndex !== -1) {
+        let updatedTask = getEditFields(taskId,tasks[taskIndex].completed);
+        tasks[taskIndex] = updatedTask;
+      localStorage.setItem("toDoTasks", JSON.stringify(tasks));
+    }
+    editId = 0;
+    clearFields();
+    toggleAddEditButtons();
+    displayTables();
+}
+  
+function deleteTask() {
+    const tableRow = event.target.closest("tr");
+    const taskId = parseInt(tableRow.querySelector(".hidden").textContent);
+
+    const tasks = getToDoTasksFromDb();
+
+    const updatedTasks = tasks.filter(task => task.id !== taskId);
+    localStorage.setItem("toDoTasks", JSON.stringify(updatedTasks));
+    displayTables();
+}
+
+function cancel(){
+    editId = 0;
+    clearFields();
+    toggleAddEditButtons();
+}
+
+function toggleAddEditButtons() {
+    const addBtn = document.getElementById('add-btn');
+    const editCancelBtn = document.getElementById('editAndCancel');
+  
+    addBtn.classList.toggle('hidden');
+    editCancelBtn.classList.toggle('hidden');
+}
+  
+  
+function getEditFields(id,completed){
+    let taskField = document.getElementById('task').value;
+    taskField = taskField.trim();
+    let due = document.getElementById('due').value;
+    due = (due==='')?currDateAsStr():due;
+
+    let priority = document.querySelector('input[name="priority"]:checked');
+    let priorityValue;
+    if (priority) priorityValue = priority.value;
+    else priorityValue = 'high';
+
+    
+
+    let obj = {
+        "id":id,
+        "taskField":taskField,
+        "due":due,
+        "priorityValue":priorityValue,
+        "completed":completed
+    }
+    return obj;
+}
+
+function populateFields(task) {
+    const taskInput = document.getElementById("task");
+    const dueInput = document.getElementById("due");
+  
+    taskInput.value = task.taskField;
+    dueInput.value = task.due;
+  
+    const priorityRadios = document.getElementsByName("priority");
+    for (const radio of priorityRadios) {
+      if (radio.value === task.priorityValue) {
+        radio.checked = true;
+      } else {
+        radio.checked = false;
+      }
+    }
+}
+  
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function addTaskToTable(id,taskField,priorityColor,due){
-//     let taskTable = document.querySelector('#tasksTable tbody');
-
-//     const row = document.createElement("tr");
-//     row.className = "bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600";
-//     row.innerHTML = `<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-normal dark:text-white">
-//                         <label class="flex items-center">
-//                             <input type="checkbox" class="mr-2 checkbox w-4 h-4">
-//                             <span>${taskField}</span>
-//                         </label>
-//                         </th>
-//                         <td class="px-6 py-4 hidden">
-//                             ${id}
-//                         </td>
-//                         <td class="px-6 py-4">
-//                         <div class="w-4 h-4 bg-${priorityColor}-500"></div>
-//                         </td>
-//                         <td class="px-6 py-4">
-//                             ${due}
-//                         </td>
-
-//                         <td class="px-6 py-4">
-//                         <i class="fa-solid fa-pen"></i>
-//                         <i class="fa-regular fa-trash-can"></i>
-//                         </td>`
-
-//     taskTable.appendChild(row);
-// }
-
-// const tasksTable = document.getElementById('tasksTable');
-
-// tasksTable.addEventListener('change', function(event) {
-//     if (event.target.classList.contains('checkbox')) {
-//         const spanElement = event.target.nextElementSibling;
-//         spanElement.classList.toggle('checked', event.target.checked);
-//     }
-// });
-
-
-// const completedTasksTable = document.getElementById('completedTasksTable');
-
-// completedTasksTable.addEventListener('change', function(event) {
-//     if (event.target.classList.contains('checkbox')) {
-//         const spanElement = event.target.nextElementSibling;
-//         spanElement.classList.toggle('checked', event.target.checked);
-//     }
-// });
