@@ -31,6 +31,26 @@ toggleButton.addEventListener('click', () => {
 });
 
 
+const tooltipBtn = document.querySelector('.tooltip-btn');
+const tooltip = document.querySelector('.tooltip');
+
+tooltipBtn.addEventListener('mouseenter', () => {
+  tooltip.classList.remove('hidden');
+});
+
+tooltipBtn.addEventListener('mouseleave', () => {
+  tooltip.classList.add('hidden');
+});
+
+
+const info = document.getElementById('info-help');
+const infoText = document.getElementById('info-text');
+
+info.addEventListener('click',()=>{
+  infoText.classList.toggle('hidden');
+})
+
+
 function toggleTaskCompletion(taskId) {
     const tasks = JSON.parse(localStorage.getItem("toDoTasks")) || [];
     const taskIndex = tasks.findIndex(task => task.id === taskId);
@@ -356,19 +376,6 @@ function showToast(message) {
   }
   
  
-  const tooltipBtn = document.querySelector('.tooltip-btn');
-  const tooltip = document.querySelector('.tooltip');
-
-  tooltipBtn.addEventListener('mouseenter', () => {
-    tooltip.classList.remove('hidden');
-  });
-
-  tooltipBtn.addEventListener('mouseleave', () => {
-    tooltip.classList.add('hidden');
-  });
-  
-
-
 
 
 

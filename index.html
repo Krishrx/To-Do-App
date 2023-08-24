@@ -41,7 +41,7 @@
           <div class="section-one w-11/12 flex flex-col justify-center items-center border-2 border-solid lg:w-8/12">
 
             <!-- notification -->
-            <div id="toast" class="p-4 invisible h-28">
+            <div id="toast" class="p-4 invisible h-20">
               
             </div>
             
@@ -58,19 +58,32 @@
 
             <!-- priority -->
             <div class="w-11/12 border-2 border-solid border-clifford px-3 lg:w-8/12">
-                <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-3">
                     <p class="py-4 px-1 inline-block mr-16">Priority</p>
                   <input type="radio" id="high" name="priority" value="high" class="h-4 w-4">
-                  <label for="high" >High</label>
-                  <div class="w-4 h-4 bg-red-500"></div>
+                  <label for="high" class="flex items-center">High <div class="ml-2 w-4 h-4 bg-red-500 inline-block"></div></label>
+                  
                   <input type="radio" id="mid" name="priority" value="moderate" class="h-4 w-4 ">
-                  <label for="mid">Moderate</label>
-                  <div class="w-4 h-4 bg-yellow-500">
-                  </div>                 
+                  <label for="mid" class="flex items-center">Moderate <div class="ml-2 w-4 h-4 bg-yellow-500 inline-block">
+                  </div> </label>
+                                  
                   <input type="radio" id="low" name="priority" value="low" class="h-4 w-4">
-                  <label for="low" >Low</label>
-                  <div class="w-4 h-4 bg-green-500"></div>
+                  <label for="low" class="flex items-center">Low <div class="ml-2 w-4 h-4 bg-green-500 inline-block"></div></label>
+                  
                 </div>
+
+                <!-- info-help -->
+                <div class="py-1 px-1 ">
+                  <span id="info-help" class="cursor-pointer text-blue-800"><i class="fa-solid fa-circle-info mr-1 mb-2"></i>info</span>
+                  <div id="info-text" class="hidden py-2  pl-6 text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400">
+                    <ul class="list-disc">
+                      <li>Due date and Priority are optional.</li>
+                      <li>By default the due date will be set to today.</li>
+                      <li>By default all task priorities are set to High.</li>
+                    </ul>
+                  </div>
+                </div>
+
               </div>
 
               <!-- add button -->
