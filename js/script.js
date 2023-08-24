@@ -244,16 +244,19 @@ function updateTasksTable(tasks){
 let editId = 0;
 
 function editTask() {
-    toggleAddEditButtons();
-    const tableRow = event.target.closest("tr");
-    const taskId = parseInt(tableRow.querySelector(".hidden").textContent);
-    editId = taskId;
+    const editCancelBtn = document.getElementById('editAndCancel');
+    if(editCancelBtn.classList.contains('hidden')){
+        toggleAddEditButtons();
+        const tableRow = event.target.closest("tr");
+        const taskId = parseInt(tableRow.querySelector(".hidden").textContent);
+        editId = taskId;
 
-    const tasks = getToDoTasksFromDb();
+        const tasks = getToDoTasksFromDb();
 
-    const taskIndex = tasks.findIndex(task => task.id === taskId);
-    if (taskIndex !== -1) {
-        populateFields(tasks[taskIndex]);
+        const taskIndex = tasks.findIndex(task => task.id === taskId);
+        if (taskIndex !== -1) {
+            populateFields(tasks[taskIndex]);
+        }
     }
 }
 
@@ -288,6 +291,7 @@ function editBtnFn(){
 }
   
 function deleteTask() {
+    if(editId===0){
     const tableRow = event.target.closest("tr");
     const taskId = parseInt(tableRow.querySelector(".hidden").textContent);
 
@@ -295,6 +299,7 @@ function deleteTask() {
 
     const updatedTasks = tasks.filter(task => task.id !== taskId);
     localStorage.setItem("toDoTasks", JSON.stringify(updatedTasks));
+    clearFields();
     displayTables();
 
     
@@ -307,6 +312,7 @@ showToast(`<div id="toast-danger" class="flex items-center w-full max-w-xs p-4 m
 </div>
 <div class="ml-3 text-sm font-normal lg:text-lg">Task removed!</div>
 </div>`)
+    }
 }
 
 function cancel(){
