@@ -43,10 +43,10 @@
         </div>
 
         <!-- main -->
-        <div class="main flex flex-col justify-center items-center border-2 border-solid w-full h-full">
+        <div class="main flex flex-col justify-center items-center w-full h-full">
 
           <!-- section one -->
-          <div class="section-one w-11/12 flex flex-col justify-center items-center border-2 border-solid lg:w-8/12">
+          <div class="section-one w-11/12 flex flex-col justify-center items-center lg:w-8/12">
 
             <!-- notification -->
             <div id="toast" class="p-4 invisible h-20">
@@ -56,47 +56,59 @@
             
 
             <!-- fields -->
-            <div class="w-11/12 border-2 border-solid border-clifford  p-3 lg:w-8/12 relative pt-12">
+            <div class="w-11/12 p-3 relative pt-12">
 
-              <div class="tooltip hidden top-0  right-10 absolute py-2 px-4 bg-gray-800 text-white rounded">Due Date</div>
+              <div class="tooltip hidden top-0  right-3 absolute py-2 px-4 bg-gray-800 text-white rounded">Due Date</div>
 
-                <input class="my-fields w-8/12" id="task" type="text" placeholder="Add a Task...">
-                <input class="my-fields cursor-pointer  tooltip-btn" type="date" name="due" id="due"> 
+              <div class="w-full flex space-x-2">
+                <input class="my-fields w-2/3 " id="task" type="text" placeholder="Add a Task...">
+
+                <input class="w-1/3 my-fields cursor-pointer  tooltip-btn" type="date" name="due" id="due"> 
+              </div>
+
             </div>
 
             <!-- priority -->
-            <div class="w-11/12 border-2 border-solid border-clifford px-3 lg:w-8/12">
-                <div class="flex items-center space-x-3">
-                    <p class="py-4 px-1 inline-block mr-16">Priority</p>
-                  <input type="radio" id="high" name="priority" value="high" class="h-4 w-4">
-                  <label for="high" class="flex items-center">High <div class="ml-2 w-4 h-4 bg-red-500 inline-block"></div></label>
-                  
-                  <input type="radio" id="mid" name="priority" value="moderate" class="h-4 w-4 ">
-                  <label for="mid" class="flex items-center">Moderate <div class="ml-2 w-4 h-4 bg-yellow-500 inline-block">
-                  </div> </label>
-                                  
-                  <input type="radio" id="low" name="priority" value="low" class="h-4 w-4">
+            <div class="w-11/12 px-3 relative md:flex ">
+              <p class="py-4 px-1 inline-block md:mt-1  md:mr-28">Priority</p>
+              <div class="flex flex-col absolute top-3 left-24 md:static md:flex md:flex-row ">
+
+                <div class="flex items-center p-1 md:items-start md:py-5 md:px-2">
+                  <input type="radio" id="high" name="priority" value="high" class="h-4 w-4 mr-2 md:mt-1">
+                  <label for="high" class="flex items-center ">High <div class="ml-2 w-4 h-4 bg-red-500 inline-block"></div></label>
+                </div>
+              
+                <div class="flex items-center p-1 md:items-start md:py-5 md:px-2">
+                  <input type="radio" id="mid" name="priority" value="moderate" class="h-4 w-4 mr-2 md:mt-1">
+                  <label for="mid" class="flex items-center">Moderate <div class="ml-2 w-4 h-4 bg-yellow-500 inline-block"></div></label>
+                </div>
+              
+                <div class="flex items-center p-1 md:items-start md:py-5 md:px-2">           
+                  <input type="radio" id="low" name="priority" value="low" class="h-4 w-4 mr-2 md:mt-1">
                   <label for="low" class="flex items-center">Low <div class="ml-2 w-4 h-4 bg-green-500 inline-block"></div></label>
-                  
                 </div>
+              
+              </div>
+              
 
-                <!-- info-help -->
-                <div class="py-1 px-1 ">
-                  <span id="info-help" class="cursor-pointer text-blue-800"><i class="fa-solid fa-circle-info mr-1 mb-2"></i>info</span>
-                  <div id="info-text" class="shadow-md hidden py-2  pl-6 text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400">
-                    <ul class="list-disc">
-                      <li>Due date and Priority are optional.</li>
-                      <li>By default the due date will be set to today.</li>
-                      <li>By default all task priorities are set to High.</li>
-                    </ul>
-                  </div>
+                
+              </div>
+
+              <!-- info-help -->
+              <div class="py-1 px-1 pt-16 md:pt-8 self-start ml-7 md:ml-11">
+                <span id="info-help" class="cursor-pointer text-blue-800"><i class="fa-solid fa-circle-info mr-1 mb-2"></i>info</span>
+                <div id="info-text" class="shadow-md hidden py-3  pl-6 pr-4 text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400">
+                  <ul class="list-disc">
+                    <li>Due date and Priority are optional.</li>
+                    <li>By default the due date will be set to today.</li>
+                    <li>By default all task priorities are set to High.</li>
+                  </ul>
                 </div>
-
               </div>
 
               <!-- add button -->
               <div>
-                <button class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-md px-5 py-2.5 text-center m-3 w-24" onclick="addTask()" id="add-btn">Add</button>
+                <button class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-md px-5 py-2.5 text-center m-3 w-24 " onclick="addTask()" id="add-btn">Add</button>
               </div>   
               
               <!-- edit & cancel button -->
@@ -108,10 +120,9 @@
         </div>
 
         <!-- section two -->
-
-        <!-- tasks table -->
-        <div class="sectionTwo w-11/12 flex flex-col justify-center items-center border-2 border-green-700 border-solid lg:w-8/12" id="section-two">
+        <div class="sectionTwo  w-11/12 flex flex-col justify-center items-center lg:w-8/12" id="section-two">
           <div class=" overflow-x-auto shadow-md sm:rounded-lg m-5 w-full">
+            <!-- tasks table -->
             <table class="text-sm text-left text-gray-500 dark:text-gray-400 w-full" id="tasksTable">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
@@ -160,7 +171,7 @@
 
 
       <!-- footer -->
-      <div class="footer mt-5 w-full headFoot">
+      <div class="footer mt-5 w-full h-full headFoot">
         <a href="https://github.com/Krishrx/"><i class="fa-brands fa-github fa-2x"></i></a>
         <a href="https://www.instagram.com/_krishrx_/"><i class="fa-brands fa-instagram fa-2x"></i></a>
         <a href="https://www.linkedin.com/in/kali-krishna-s-279a5b265/"><i class="fa-brands fa-linkedin-in fa-2x"></i></a>
