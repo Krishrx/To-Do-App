@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To Do App</title>
+    <title>To Do | Your Productivity Partner</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -21,6 +21,10 @@
         .my-fields{
             @apply shadow appearance-none  py-2 px-3 border rounded text-gray-700 leading-tight focus:outline-none focus:ring-2 ring-blue-400;
         } 
+        .headFoot{
+          @apply bg-gradient-to-r from-purple-50 to-blue-50
+        }
+
       </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
@@ -30,12 +34,12 @@
     <div class="my-container w-full h-full">
 
         <!-- header -->
-        <div class="my-head">
+        <div class="my-head headFoot">
             <h1 class="text-center  font-bold p-5 text-3xl">To Do</h1>
         </div>
 
         <!-- main -->
-        <div class="flex flex-col justify-center items-center border-2 border-solid w-full h-full">
+        <div class="main flex flex-col justify-center items-center border-2 border-solid w-full h-full">
 
           <!-- section one -->
           <div class="section-one w-11/12 flex flex-col justify-center items-center border-2 border-solid lg:w-8/12">
@@ -75,7 +79,7 @@
                 <!-- info-help -->
                 <div class="py-1 px-1 ">
                   <span id="info-help" class="cursor-pointer text-blue-800"><i class="fa-solid fa-circle-info mr-1 mb-2"></i>info</span>
-                  <div id="info-text" class="hidden py-2  pl-6 text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400">
+                  <div id="info-text" class="shadow-md hidden py-2  pl-6 text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400">
                     <ul class="list-disc">
                       <li>Due date and Priority are optional.</li>
                       <li>By default the due date will be set to today.</li>
@@ -88,13 +92,13 @@
 
               <!-- add button -->
               <div>
-                <button class="rounded-md text-indigo-500  p-3 m-3 w-24 bg-indigo-200 shadow shadow-blue-500/40 hover:shadow-indigo-500/40" onclick="addTask()" id="add-btn">Add</button>
+                <button class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-md px-5 py-2.5 text-center m-3 w-24" onclick="addTask()" id="add-btn">Add</button>
               </div>   
               
               <!-- edit & cancel button -->
               <div class="hidden" id="editAndCancel">
-                <button class="rounded-md text-indigo-500  p-3 m-3 w-24 bg-indigo-200 shadow shadow-blue-500/40 hover:shadow-indigo-500/40" onclick="editBtnFn()" id="edit-btn">Edit</button>
-                <button class="rounded-md text-white  p-3 m-3 w-24 bg-gray-500 shadow shadow-blue-500/40 hover:shadow-indigo-500/40" onclick="cancel()" id="cancel-btn">Cancel</button>
+                <button class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-md px-5 py-2.5 text-center m-3 w-24" onclick="editBtnFn()" id="edit-btn">Update</button>
+                <button class="text-white bg-gradient-to-br from-slate-600 to-zinc-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-slate-300 dark:focus:ring-slate-800 font-medium rounded-md px-5 py-2.5 text-center m-3 w-24" onclick="cancel()" id="cancel-btn">Cancel</button>
               </div>
             
         </div>
@@ -147,29 +151,21 @@
 
 
         </div>
-
-        <!-- footer -->
-          <div class="footer mt-5 w-full">
-            <a href="https://github.com/Krishrx/"><i class="fa-brands fa-github fa-2x"></i></a>
-            <a href="https://www.instagram.com/_krishrx_/"><i class="fa-brands fa-instagram fa-2x"></i></a>
-            <a href="https://www.linkedin.com/in/kali-krishna-s-279a5b265/"><i class="fa-brands fa-linkedin-in fa-2x"></i></a>
-            <a href="https://twitter.com/krishrx3"><i class="fa-brands fa-x-twitter fa-2x"></i></a>
-
-            <div class="end-text">
-                <p class="pb-5">Made with ❤️ by Krish</p>
-            </div>
-        </div>
-
-        
+ 
       </div>
 
 
+      <!-- footer -->
+      <div class="footer mt-5 w-full headFoot">
+        <a href="https://github.com/Krishrx/"><i class="fa-brands fa-github fa-2x"></i></a>
+        <a href="https://www.instagram.com/_krishrx_/"><i class="fa-brands fa-instagram fa-2x"></i></a>
+        <a href="https://www.linkedin.com/in/kali-krishna-s-279a5b265/"><i class="fa-brands fa-linkedin-in fa-2x"></i></a>
+        <a href="https://twitter.com/krishrx3"><i class="fa-brands fa-x-twitter fa-2x"></i></a>
 
-
-
-
-
-
+        <div class="end-text">
+            <p class="pb-5 font-medium">Made with ❤️ by Krish</p>
+        </div>
+    </div>
 
 
     </div>
