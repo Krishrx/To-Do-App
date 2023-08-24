@@ -48,9 +48,12 @@
             
 
             <!-- fields -->
-            <div class="w-11/12 border-2 border-solid border-clifford  p-3 lg:w-8/12">
+            <div class="w-11/12 border-2 border-solid border-clifford  p-3 lg:w-8/12 relative pt-12">
+
+              <div class="tooltip hidden top-0  right-10 absolute py-2 px-4 bg-gray-800 text-white rounded">Due Date</div>
+
                 <input class="my-fields w-8/12" id="task" type="text" placeholder="Add a Task...">
-                <input class="my-fields" type="date" name="due" id="due">  
+                <input class="my-fields cursor-pointer  tooltip-btn" type="date" name="due" id="due"> 
             </div>
 
             <!-- priority -->

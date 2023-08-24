@@ -60,7 +60,7 @@ function addTask(){
     </svg>
     <span class="sr-only">Check icon</span>
 </div>
-<div class="ml-3 text-sm font-normal">You've successfully added the task!</div>
+<div class="ml-3 text-sm font-normal lg:text-md">You've successfully added the task!</div>
 
 </div>`)
 
@@ -76,7 +76,7 @@ showToast(`<div id="toast-warning" class="flex items-center w-full max-w-xs p-4 
     </svg>
     <span class="sr-only">Warning icon</span>
 </div>
-<div class="ml-3 text-sm font-normal">Oops!! task can't be empty!</div>
+<div class="ml-3 text-sm font-normal lg:text-lg">Oops!! task can't be empty!</div>
 </div>`)
     return false;
     } 
@@ -205,7 +205,7 @@ function updateTasksTable(tasks){
 
                             <td class="px-6 py-4" style="width: 20%;">
                             <i class="fa-solid fa-pen edit cursor-pointer" onclick="editTask()"></i>
-                            <i class="fa-regular fa-trash-can delete cursor-pointer" onclick="deleteTask()"></i>
+                            <i class="fa-regular fa-trash-can delete cursor-pointer ml-2" onclick="deleteTask()"></i>
                             </td>`
         if(task.completed){
             completedTable.appendChild(row);
@@ -262,7 +262,7 @@ function editBtnFn(){
     </svg>
     <span class="sr-only">Check icon</span>
 </div>
-<div class="ml-3 text-sm font-normal">Task updated successfully!</div>
+<div class="ml-3 text-sm font-normal lg:text-lg">Task updated successfully!</div>
 
 </div>`)
 }
@@ -285,7 +285,7 @@ showToast(`<div id="toast-danger" class="flex items-center w-full max-w-xs p-4 m
     </svg>
     <span class="sr-only">Error icon</span>
 </div>
-<div class="ml-3 text-sm font-normal">Task removed!</div>
+<div class="ml-3 text-sm font-normal lg:text-lg">Task removed!</div>
 </div>`)
 }
 
@@ -356,6 +356,17 @@ function showToast(message) {
   }
   
  
+  const tooltipBtn = document.querySelector('.tooltip-btn');
+  const tooltip = document.querySelector('.tooltip');
+
+  tooltipBtn.addEventListener('mouseenter', () => {
+    tooltip.classList.remove('hidden');
+  });
+
+  tooltipBtn.addEventListener('mouseleave', () => {
+    tooltip.classList.add('hidden');
+  });
+  
 
 
 
