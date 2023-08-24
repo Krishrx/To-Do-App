@@ -3,3 +3,46 @@
     transition-property: opacity;
     transition-duration: 0.3s;
   }  
+
+  .footer i{
+    margin: 10px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    color: #000000;
+}
+
+.footer{
+    text-align: center;
+}
+
+.footer .fa-instagram:hover{
+    color: white;
+    background: #d6249f;
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+}
+
+.footer .fa-github:hover{
+    color: white;
+    background: black;
+}
+
+.footer .fa-linkedin-in:hover{
+    color: white;
+    background: #0A66C2;
+    
+}
+
+.footer .fa-x-twitter:hover{
+    color: white;
+    background: black;
+}
+  
+.end-text{
+    text-align: center;
+}
+
+.end-text p{
+    margin-bottom: 0;
+    padding-bottom: 10px;
+}
