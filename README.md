@@ -12,7 +12,7 @@ You can try out the To Do App [here](https://to-do-app-6bh8.onrender.com/).
 - **Task Completion:** Mark tasks as completed, sending them to the Completed section.
 - **Responsive Design:** While best suited for larger devices, the app is responsive for mobile use as well.
 - **Info Section:** Access quick information about due dates, priority, and default settings.
-- **PS: By default, the tasks are sorted based on priority followed by due date.**
+- By default, the tasks are sorted based on priority followed by due date.
 
 ## How to Use
 
