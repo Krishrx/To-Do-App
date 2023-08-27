@@ -2,6 +2,8 @@
 
 Welcome to the To Do App! This simple and intuitive web application allows you to efficiently manage your tasks, prioritize them, set due dates, and keep track of your progress. Whether you're a busy professional, a student, or anyone with tasks to manage, this app is designed to help you stay organized and productive.
 
+You can try out the To Do App [here](https://to-do-app-6bh8.onrender.com/).
+
 ## Features
 
 - **Task Management:** Add, edit, and delete tasks effortlessly.
@@ -10,6 +12,7 @@ Welcome to the To Do App! This simple and intuitive web application allows you t
 - **Task Completion:** Mark tasks as completed, sending them to the Completed section.
 - **Responsive Design:** While best suited for larger devices, the app is responsive for mobile use as well.
 - **Info Section:** Access quick information about due dates, priority, and default settings.
+- PS: By default, the tasks are sorted based on priority followed by due date.
 
 ## How to Use
 
@@ -21,7 +24,12 @@ Welcome to the To Do App! This simple and intuitive web application allows you t
 
 ## Getting Started
 
-To get started, simply visit the deployed version of the app using the following link: [To Do App](https://to-do-app-6bh8.onrender.com/). Once on the app's page, you can start adding tasks right away. Remember, due date and priority are optional, and they have default settings in place to make task entry even quicker. By default, the tasks are sorted based on priority followed by due date.
+To use the application locally, follow these steps:
+
+1. Clone this repository to your local machine.
+2. Open the project directory in your preferred code editor.
+3. Open the `index.html` file in a web browser.
+4. Start exploring the different features.
 
 ## Technologies Used
 
@@ -48,4 +56,3 @@ I welcome contributions and suggestions from the community. If you have ideas to
 I value your feedback! If you have any suggestions, bug reports, or feature requests, please open an issue on this repository. If you want to share your experience, please don't hesitate to contact me. You can reach me directly through the contact information provided in the app or on GitHub.
 
 Happy task management!
-
