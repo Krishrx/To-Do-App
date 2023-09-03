@@ -61,11 +61,6 @@ function toggleTaskCompletion(taskId) {
     }
   }
 
-  document.addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-      addTask();
-    }
-  });
 
 function addTask(){
     if(!validate()) return;
